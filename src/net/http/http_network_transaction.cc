@@ -1655,16 +1655,16 @@ void HttpNetworkTransaction::AddHttpHeadersLog() {
   GetLoadTimingInfo(&load_timing_info);
   const base::TimeTicks kNullTicks;
 
-  base::StringAppendF(&output, "\"domainLookupStart\": %lld, ", (load_timing_info.connect_timing.dns_start - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"domainLookupEnd\": %lld, ", (load_timing_info.connect_timing.dns_end - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"connectStatr\": %lld, ", (load_timing_info.connect_timing.connect_start - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"connectEnd\": %lld, ", (load_timing_info.connect_timing.connect_end - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"requestStart\": %lld, ", (load_timing_info.send_start - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"responseStart\": %lld, ", (load_timing_info.send_end - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"responseEnd\": %lld, ", (base::TimeTicks::Now() - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"domainLookupStart\": %ld, ", (load_timing_info.connect_timing.dns_start - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"domainLookupEnd\": %ld, ", (load_timing_info.connect_timing.dns_end - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"connectStatr\": %ld, ", (load_timing_info.connect_timing.connect_start - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"connectEnd\": %ld, ", (load_timing_info.connect_timing.connect_end - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"requestStart\": %ld, ", (load_timing_info.send_start - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"responseStart\": %ld, ", (load_timing_info.send_end - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"responseEnd\": %ld, ", (base::TimeTicks::Now() - kNullTicks).InMilliseconds());
   base::StringAppendF(&output, "\"redirectEnd\": %d, ", 0);
   base::StringAppendF(&output, "\"redirectStart\": %d, ", 0);
-  base::StringAppendF(&output, "\"fetchStart\": %lld", (start_time_ - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"fetchStart\": %ld", (start_time_ - kNullTicks).InMilliseconds());
   base::StringAppendF(&output, "%s", "}");
   LOG(INFO) << output;
 }
@@ -1677,19 +1677,19 @@ void HttpNetworkTransaction::AddRequestSizeLog() {
 
   std::string output("PerformanceLOG: ");
   base::StringAppendF(&output, "{\"url\": \"%s\", \"http_info\":", request_->url.spec().c_str());
-  base::StringAppendF(&output, "{\"total_received_bytes\": %lld, ", GetTotalReceivedBytes());
-  base::StringAppendF(&output, "\"total_sent_bytes\": %lld", GetTotalSentBytes());
+  base::StringAppendF(&output, "{\"total_received_bytes\": %ld, ", GetTotalReceivedBytes());
+  base::StringAppendF(&output, "\"total_sent_bytes\": %ld", GetTotalSentBytes());
   base::StringAppendF(&output, "%s", "},");
-  base::StringAppendF(&output, "\"domainLookupStart\": %lld, ", (load_timing_info.connect_timing.dns_start - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"domainLookupEnd\": %lld, ", (load_timing_info.connect_timing.dns_end - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"connectStatr\": %lld, ", (load_timing_info.connect_timing.connect_start - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"connectEnd\": %lld, ", (load_timing_info.connect_timing.connect_end - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"requestStart\": %lld, ", (load_timing_info.send_start - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"responseStart\": %lld, ", (load_timing_info.send_end - kNullTicks).InMilliseconds());
-  base::StringAppendF(&output, "\"responseEnd\": %lld, ", (base::TimeTicks::Now() - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"domainLookupStart\": %ld, ", (load_timing_info.connect_timing.dns_start - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"domainLookupEnd\": %ld, ", (load_timing_info.connect_timing.dns_end - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"connectStatr\": %ld, ", (load_timing_info.connect_timing.connect_start - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"connectEnd\": %ld, ", (load_timing_info.connect_timing.connect_end - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"requestStart\": %ld, ", (load_timing_info.send_start - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"responseStart\": %ld, ", (load_timing_info.send_end - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"responseEnd\": %ld, ", (base::TimeTicks::Now() - kNullTicks).InMilliseconds());
   base::StringAppendF(&output, "\"redirectEnd\": %d, ", 0);
   base::StringAppendF(&output, "\"redirectStart\": %d, ", 0);
-  base::StringAppendF(&output, "\"fetchStart\": %lld", (start_time_ - kNullTicks).InMilliseconds());
+  base::StringAppendF(&output, "\"fetchStart\": %ld", (start_time_ - kNullTicks).InMilliseconds());
   base::StringAppendF(&output, "%s", "}");
   LOG(INFO) << output;
 }
