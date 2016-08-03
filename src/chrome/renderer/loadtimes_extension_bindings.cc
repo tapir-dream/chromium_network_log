@@ -381,28 +381,27 @@ class LoadTimesExtensionWrapper : public v8::Extension {
     args.GetReturnValue().Set(csi);
   }
 
-// ========= Tapir ADD =============
-static void GetNetLog(const v8::FunctionCallbackInfo<v8::Value>& args) {
-  args.GetReturnValue().SetNull();
+  // ========= Tapir ADD =============
+  static void GetNetLog(const v8::FunctionCallbackInfo<v8::Value>& args) {
+    args.GetReturnValue().SetNull();
 
-  std::vector<std::string> result;
-  RenderThread::Get()->Send(new FrameHostMsg_network_log(&result));
+    std::vector<std::string> result;
+    RenderThread::Get()->Send(new FrameHostMsg_network_log(&result));
 
-  v8::Isolate* isolate = args.GetIsolate();
-  v8::Local<v8::Context> ctx = isolate->GetCurrentContext();
-  v8::Local<v8::Array> net_log = v8::Array::New(isolate);
+    v8::Isolate* isolate = args.GetIsolate();
+    v8::Local<v8::Context> ctx = isolate->GetCurrentContext();
+    v8::Local<v8::Array> net_log = v8::Array::New(isolate);
 
-  uint32_t count = result.size();
-  LOG(INFO) << count;
+    uint32_t count = result.size();
 
-  for (uint32_t i = 0; i < count; i++) {
-    if (!net_log->Set(ctx,  i ,v8::String::NewFromUtf8(isolate, result.at(i).c_str(),
-                             v8::NewStringType::kNormal).ToLocalChecked()).FromMaybe(false)) {
-      continue;
+    for (uint32_t i = 0; i < count; i++) {
+      if (!net_log->Set(ctx,  i ,v8::String::NewFromUtf8(isolate, result.at(i).c_str(),
+                               v8::NewStringType::kNormal).ToLocalChecked()).FromMaybe(false)) {
+        continue;
+      }
     }
+    args.GetReturnValue().Set(net_log);
   }
-  args.GetReturnValue().Set(net_log);
-}
 
 };
 
