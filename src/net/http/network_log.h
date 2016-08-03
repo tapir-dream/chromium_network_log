@@ -20,11 +20,11 @@ public:
   }
 
   void setValue(const std::string entry) {
-  	headers_.push_back(entry);
+    headers_.push_back(entry);
   }
 
  std::vector<std::string> headers() {
-  	return headers_;
+    return headers_;
   }
 
   void getHeaders(std::vector<std::string>* list) {
@@ -37,7 +37,7 @@ public:
 private:
    static Network_log* m_pInstance;
    std::vector<std::string> headers_;
-   
+
 };
 
 }
