@@ -1651,7 +1651,6 @@ bool HttpNetworkTransaction::ForWebSocketHandshake() const {
   
 // =========== Tapir ADD ==========
 void HttpNetworkTransaction::AddHttpHeadersLog() {
-   //std::string output("PerformanceLOG: ");
   std::string output("");
   base::StringAppendF(&output, "{\"url\": \"%s\", \"http_info\":", request_->url.spec().c_str());
   base::StringAppendF(&output, "{\"code\": %d, ", response_.headers->response_code());
@@ -1691,7 +1690,6 @@ void HttpNetworkTransaction::AddRequestSizeLog() {
   GetLoadTimingInfo(&load_timing_info);
   const base::TimeTicks kNullTicks;
 
-  //std::string output("PerformanceLOG: ");
   std::string output("");
   base::StringAppendF(&output, "{\"url\": \"%s\", \"http_info\":", request_->url.spec().c_str());
   base::StringAppendF(&output, "{\"total_received_bytes\": %lld, ", GetTotalReceivedBytes());
