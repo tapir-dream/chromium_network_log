@@ -271,9 +271,7 @@ bool RenderFrameMessageFilter::OnMessageReceived(const IPC::Message& message) {
 // ============ Tapir ADD ===========
 void RenderFrameMessageFilter::OnNetLog(std::vector<std::string>* list) {
   net::Network_log* network_log = net::Network_log::Instance();
-  LOG(INFO) << "1111111111111";
   network_log->getHeaders(list);
-  LOG(INFO) << "2222222222222";
 }
 
 void RenderFrameMessageFilter::DownloadUrl(int render_view_id,
