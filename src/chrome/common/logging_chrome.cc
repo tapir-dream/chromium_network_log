@@ -132,27 +132,27 @@ LoggingDestination DetermineLogMode(const base::CommandLine& command_line) {
 #endif
 
   // =========== Tapir ADD =============
-  command_line.HasSwitch(kInvertLoggingSwitch);
-  enable_logging = true;
-  logging::LoggingDestination log_mode;
-  log_mode = kDefaultLoggingMode;
+  // command_line.HasSwitch(kInvertLoggingSwitch);
+  // enable_logging = true;
+  // logging::LoggingDestination log_mode;
+  // log_mode = kDefaultLoggingMode;
   // log_mode = logging::LOG_TO_SYSTEM_DEBUG_LOG;
 
   // =========== Source ================
-  // if (command_line.HasSwitch(kInvertLoggingSwitch))
-  //   enable_logging = !enable_logging;
+  if (command_line.HasSwitch(kInvertLoggingSwitch))
+    enable_logging = !enable_logging;
 
-  // logging::LoggingDestination log_mode;
-  // if (enable_logging) {
-  //   // Let --enable-logging=stderr force only stderr, particularly useful for
-  //   // non-debug builds where otherwise you can't get logs to stderr at all.
-  //   if (command_line.GetSwitchValueASCII(switches::kEnableLogging) == "stderr")
-  //     log_mode = logging::LOG_TO_SYSTEM_DEBUG_LOG;
-  //   else
-  //     log_mode = kDefaultLoggingMode;
-  // } else {
-  //   log_mode = logging::LOG_NONE;
-  // }
+  logging::LoggingDestination log_mode;
+  if (enable_logging) {
+    // Let --enable-logging=stderr force only stderr, particularly useful for
+    // non-debug builds where otherwise you can't get logs to stderr at all.
+    if (command_line.GetSwitchValueASCII(switches::kEnableLogging) == "stderr")
+      log_mode = logging::LOG_TO_SYSTEM_DEBUG_LOG;
+    else
+      log_mode = kDefaultLoggingMode;
+  } else {
+    log_mode = logging::LOG_NONE;
+  }
   
   return log_mode;
 }

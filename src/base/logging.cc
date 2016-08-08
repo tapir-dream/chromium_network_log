@@ -358,27 +358,27 @@ bool BaseInitLoggingImpl(const LoggingSettings& settings) {
   // vlog switches.
 
   // ============ Tapir ADD ==============
-  g_vlog_info_prev = g_vlog_info;
+  // g_vlog_info_prev = g_vlog_info;
 
-  g_vlog_info =
-      new VlogInfo(command_line->GetSwitchValueASCII(switches::kV),
-                   command_line->GetSwitchValueASCII(switches::kVModule),
-                   &g_min_log_level);
+  // g_vlog_info =
+  //     new VlogInfo(command_line->GetSwitchValueASCII(switches::kV),
+  //                  command_line->GetSwitchValueASCII(switches::kVModule),
+  //                  &g_min_log_level);
 
   // ============= Source ===============
-  // if (command_line->HasSwitch(switches::kV) ||
-  //     command_line->HasSwitch(switches::kVModule)) {
-  //   // NOTE: If |g_vlog_info| has already been initialized, it might be in use
-  //   // by another thread. Don't delete the old VLogInfo, just create a second
-  //   // one. We keep track of both to avoid memory leak warnings.
-  //   CHECK(!g_vlog_info_prev);
-  //   g_vlog_info_prev = g_vlog_info;
+  if (command_line->HasSwitch(switches::kV) ||
+      command_line->HasSwitch(switches::kVModule)) {
+    // NOTE: If |g_vlog_info| has already been initialized, it might be in use
+    // by another thread. Don't delete the old VLogInfo, just create a second
+    // one. We keep track of both to avoid memory leak warnings.
+    CHECK(!g_vlog_info_prev);
+    g_vlog_info_prev = g_vlog_info;
 
-  //   g_vlog_info =
-  //       new VlogInfo(command_line->GetSwitchValueASCII(switches::kV),
-  //                    command_line->GetSwitchValueASCII(switches::kVModule),
-  //                    &g_min_log_level);
-  // }
+    g_vlog_info =
+        new VlogInfo(command_line->GetSwitchValueASCII(switches::kV),
+                     command_line->GetSwitchValueASCII(switches::kVModule),
+                     &g_min_log_level);
+  }
 
   g_logging_destination = settings.logging_dest;
 

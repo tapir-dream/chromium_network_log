@@ -491,7 +491,7 @@ std::vector<GURL> StartupBrowserCreator::GetURLsFromCommandLine(
   std::vector<GURL> urls;
 
   // ========= Tapir ADD ===========
-  urls.push_back(GURL("data:,"));
+  // urls.push_back(GURL("data:,"));
 
   const base::CommandLine::StringVector& params = command_line.GetArgs();
   for (size_t i = 0; i < params.size(); ++i) {

@@ -144,7 +144,7 @@ WebInspector.NetworkPanel.prototype = {
         this._panelToolbar.appendToolbarItem(this._preserveLogCheckbox);
 
         // ======= Tapir ADD =======
-        WebInspector.moduleSetting("cacheDisabled").set(true);
+        // WebInspector.moduleSetting("cacheDisabled").set(true);
         
         this._disableCacheCheckbox = new WebInspector.ToolbarCheckbox(WebInspector.UIString("Disable cache"), WebInspector.UIString("Disable cache (while DevTools is open)"), WebInspector.moduleSetting("cacheDisabled"));
         this._panelToolbar.appendToolbarItem(this._disableCacheCheckbox);

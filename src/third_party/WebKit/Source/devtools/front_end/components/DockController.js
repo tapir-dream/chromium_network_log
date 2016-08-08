@@ -53,15 +53,15 @@ WebInspector.DockController = function(canDock)
     // ======== Tapir ADD ======
     //this._lastDockStateSetting = WebInspector.settings.createSetting("lastDockState", "undocked");
     //this._currentDockStateSetting = WebInspector.settings.createSetting("currentDockState", "undocked");
-    this._currentDockStateSetting.set(WebInspector.DockController.State.Undocked);
+    // this._currentDockStateSetting.set(WebInspector.DockController.State.Undocked);
     
     // ======== Source Code =======
-    //this._lastDockStateSetting = WebInspector.settings.createSetting("lastDockState", "bottom");
+    this._lastDockStateSetting = WebInspector.settings.createSetting("lastDockState", "bottom");
     
-    //if (this._states.indexOf(this._currentDockStateSetting.get()) === -1)
-    //    this._currentDockStateSetting.set("right");
-    //if (this._states.indexOf(this._lastDockStateSetting.get()) === -1)
-    //    this._currentDockStateSetting.set("bottom");
+    if (this._states.indexOf(this._currentDockStateSetting.get()) === -1)
+       this._currentDockStateSetting.set("right");
+    if (this._states.indexOf(this._lastDockStateSetting.get()) === -1)
+       this._currentDockStateSetting.set("bottom");
 
 }
 
