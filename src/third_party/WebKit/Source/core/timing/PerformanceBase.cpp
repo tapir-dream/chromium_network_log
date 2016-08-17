@@ -50,7 +50,7 @@ using PerformanceObserverVector = HeapVector<Member<PerformanceObserver>>;
 // ============= Tapir ADD ===============
 static const size_t defaultResourceTimingBufferSize = 1500;
 static const size_t defaultFrameTimingBufferSize = 1500;
-// ============= Soruce ===============
+// ============= Source ===============
 // static const size_t defaultResourceTimingBufferSize = 150;
 // static const size_t defaultFrameTimingBufferSize = 150;
 
