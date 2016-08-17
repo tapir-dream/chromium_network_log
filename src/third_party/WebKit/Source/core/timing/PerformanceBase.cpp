@@ -51,8 +51,8 @@ using PerformanceObserverVector = HeapVector<Member<PerformanceObserver>>;
 static const size_t defaultResourceTimingBufferSize = 1500;
 static const size_t defaultFrameTimingBufferSize = 1500;
 // ============= Soruce ===============
-// static const size_t defaultResourceTimingBufferSize = 1500;
-// static const size_t defaultFrameTimingBufferSize = 1500;
+// static const size_t defaultResourceTimingBufferSize = 150;
+// static const size_t defaultFrameTimingBufferSize = 150;
 
 PerformanceBase::PerformanceBase(double timeOrigin)
     : m_frameTimingBufferSize(defaultFrameTimingBufferSize)
